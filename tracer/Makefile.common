@@ -37,8 +37,8 @@ ROSS = /p/lscratchf/jain6/migrate-tracer/ROSS/install
 #base directory of this code
 BASE_DIR = /p/lscratchf/jain6/migrate-tracer
 CODES = ${BASE_DIR}/codes
-CODES_LIBS = -L${CODES}/install/lib
-CODES_LIBS += -L${ROSS}/lib
+CODES_LIBS = -L${CODES}/install/lib -Wl,-rpath=${CODES}/install/lib
+CODES_LIBS += -L${ROSS}/lib -Wl,-rpath=${ROSS}/lib
 CODES_LIBS += -lcodes -lROSS -lm
 
 ifeq ($(ARCH),bgq)
@@ -59,7 +59,7 @@ OPTS = ${CXXFLAGS} ${ARCH_FLAGS} ${CODES_CFLAGS} ${SELECT_TRACE}
 BASE_INCS= -Ibigsim -I.
 
 ifeq ($(SELECT_TRACE),-DTRACER_BIGSIM_TRACES=1)
-CHARM_LIBS = -L$(CHARMPATH)/lib
+CHARM_LIBS = -L$(CHARMPATH)/lib -Wl,-rpath=$(CHARMPATH)/lib
 CHARM_LIBS += -lconv-bigsim-logs -lblue-standalone -lconv-util
 OPTS += -I$(CHARMPATH)/include
 endif
