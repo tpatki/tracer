@@ -29,14 +29,19 @@ SEQ_CXX = icpc
 endif
 
 #CHARMPATH = /p/lscratchf/jain6/network-sim/charm/verbs-linux-x86_64-bigemulator-icc
-CHARMPATH = /p/lscratchf/jain6/network-sim/charm/mpi-linux-x86_64-bigemulator
+#CHARMPATH = /p/lscratchf/jain6/network-sim/charm/mpi-linux-x86_64-bigemulator
+CHARMPATH = /g/g90/patki1/src/tracer-setup/charm/mpi-linux-x86_64
 
 #ross install directory
-ROSS = /p/lscratchf/jain6/migrate-tracer/ROSS/install
+#ROSS = /p/lscratchf/jain6/migrate-tracer/ROSS/install
+ROSS = /g/g90/patki1/src/tracer-setup/ROSS-install
+
 #base directory of this code
-BASE_DIR = /p/lscratchf/jain6/migrate-tracer
-CODES = ${BASE_DIR}/codes
-CODES_LIBS = -L${CODES}/install/lib -Wl,-rpath=${CODES}/install/lib
+#BASE_DIR = /p/lscratchf/jain6/migrate-tracer
+#CODES = ${BASE_DIR}/codes
+CODES = /g/g90/patki1/src/tracer-setup/codes-install
+
+CODES_LIBS = -L${CODES}/lib -Wl,-rpath=${CODES}/lib
 CODES_LIBS += -L${ROSS}/lib -Wl,-rpath=${ROSS}/lib
 CODES_LIBS += -lcodes -lROSS -lm
 
@@ -49,7 +54,7 @@ else
 ARCH_FLAGS = -Wall 
 endif
 
-CODES_CFLAGS = -I${CODES}/install/include -I${ROSS}/include
+CODES_CFLAGS = -I${CODES}/include -I${ROSS}/include
 
 CFLAGS = -O3 -g
 CXXFLAGS = -O3 -g
